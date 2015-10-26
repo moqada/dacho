@@ -8,7 +8,12 @@
 [![DevDependency Status][daviddm-dev-image]][daviddm-dev-url]
 [![License][license-image]][license-url]
 
-Unitility for unique action type in Flux
+Utility of generating key/value object with a prefixed value.
+
+For example, it is convenient to define ActionTypes for Flux, Redux and the like.
+
+> dacho is named after [Dacho Club](https://ja.wikipedia.org/wiki/%E3%83%80%E3%83%81%E3%83%A7%E3%82%A6%E5%80%B6%E6%A5%BD%E9%83%A8) that is Japanese comedy group.
+> They perform patterned reaction by the simple rules every time, but it is unique...
 
 
 ## Installation
@@ -19,6 +24,110 @@ npm install --save dacho
 
 
 ## Usage
+
+### Basic
+
+It generate key/value object with a prefixed value.
+
+```javascript
+// constants/nettoActionTypes.js
+import reaction from 'dacho';
+
+export default reaction([
+  'IN',
+  'OUT',
+  'PUSH'
+], 'NETTO/')
+```
+
+```javascript
+// constants/odenActionTypes.js
+import reaction from 'dacho';
+
+export default reaction([
+  'IN',
+  'OUT',
+  'PUSH',
+  'SHOWER',
+], 'ODEN/')
+```
+
+```javascript
+// actionCreator.js
+import nettoActionTypes from './constants/nettoActionTypes';
+import odenActionTypes from './constants/odenActionTypes';
+
+
+function rejectBathing() {
+  return {
+    type: nettoActionTypes.PUSH,  // 'NETTO/PUSH'
+    payload: {member: 'UESHIMA'}
+  };
+}
+
+function rejectEating() {
+  return {
+    type: odenActionTypes.PUSH,  // 'ODEN/PUSH'
+    payload: {member: 'UESHIMA'}
+  };
+}
+
+// assert.deepEqual(nettoActionTypes, {
+//   IN: 'NETTO/IN',
+//   OUT: 'NETTO/OUT',
+//   PUSH: 'NETTO/PUSH'
+// });
+
+// assert.deepEqual(odenActionTypes, {
+//   IN: 'ODEN/IN',
+//   OUT: 'ODEN/OUT',
+//   PUSH: 'ODEN/PUSH'
+//   SHOWER: 'ODEN/SHOWER'
+// });
+```
+
+It throws Error when you create same value object.
+
+```javascript
+// ./constants/nettoActionTypes2.js
+import reaction from 'dacho';
+
+export default reaction([
+  'IN'
+], 'NETTO/');
+
+// -> throw Error because 'NETTO/IN' is already defined.
+```
+
+### With Global Prefix
+
+It generate object with global prefix.
+
+```javascript
+// ./singletons/reaction.js
+import {createReaction} from 'dacho';
+
+export default createReaction('DEGAWA/')
+```
+
+```javascript
+// ./constants/degawaNettoActionTypes.js
+import reaction from './singletons/reaction';
+
+export default reaction([
+  'IN',
+  'OUT',
+  'PUSH'
+], 'NETTO/');
+
+// import degawaNettoActionTypes from './constants/degawaNettoActionTypes';
+//
+// assert.deepEqual(degawaNettoActionTypes, {
+//   IN: 'DEGAWA/NETTO/IN',
+//   OUT: 'DEGAWA/NETTO/OUT',
+//   PUSH: 'DEGAWA/NETTO/PUSH'
+// });
+```
 
 [npm-url]: https://www.npmjs.com/package/dacho
 [npm-image]: https://img.shields.io/npm/v/dacho.svg?style=flat-square
