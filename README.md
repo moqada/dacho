@@ -11,6 +11,7 @@
 Utility of generating key/value object with a prefixed value.
 
 For example, it is convenient to define ActionTypes for Flux, Redux and the like.
+Besides, it prevent from defining same value. It throws Error if you registered already defined value.
 
 > dacho is named after [Dacho Club](https://ja.wikipedia.org/wiki/%E3%83%80%E3%83%81%E3%83%A7%E3%82%A6%E5%80%B6%E6%A5%BD%E9%83%A8) that is Japanese comedy group.
 > They perform patterned reaction by the simple rules every time, but it is unique...
