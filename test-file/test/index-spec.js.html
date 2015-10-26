@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/index-spec.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <a data-ice="repoURL" href="https://github.com/moqada/dacho.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Dacho.js~Dacho.html">Dacho</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createReaction">createReaction</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/index-spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import assert from &apos;power-assert&apos;;
+import clearRequire from &apos;clear-require&apos;;
+
+describe(&apos;dacho&apos;, () =&gt; {
+  describe(&apos;reaction&apos;, () =&gt; {
+    let reaction = null;
+    beforeEach(() =&gt; {
+      clearRequire(&apos;../src&apos;);
+      reaction = require(&apos;../src&apos;, {}).default;
+    });
+
+    it(&apos;can generate types&apos;, () =&gt; {
+      const types = reaction([&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;], &apos;FOO_&apos;);
+      assert.deepEqual(types, {
+        LOGIN: &apos;FOO_LOGIN&apos;,
+        LOGIN_SUCCESS: &apos;FOO_LOGIN_SUCCESS&apos;,
+        LOGIN_ERROR: &apos;FOO_LOGIN_ERROR&apos;
+      });
+    });
+
+    it(&apos;can generate types without prefix&apos;, () =&gt; {
+      const types = reaction([&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;]);
+      assert.deepEqual(types, {
+        LOGIN: &apos;LOGIN&apos;,
+        LOGIN_SUCCESS: &apos;LOGIN_SUCCESS&apos;,
+        LOGIN_ERROR: &apos;LOGIN_ERROR&apos;
+      });
+    });
+
+    it(&apos;can generate types when prefix is different&apos;, () =&gt; {
+      const types1 = reaction([&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;], &apos;FOO_&apos;);
+      const types2 = reaction([&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;], &apos;BAR_&apos;);
+      assert.deepEqual(types1, {
+        LOGIN: &apos;FOO_LOGIN&apos;,
+        LOGIN_SUCCESS: &apos;FOO_LOGIN_SUCCESS&apos;,
+        LOGIN_ERROR: &apos;FOO_LOGIN_ERROR&apos;
+      });
+      assert.deepEqual(types2, {
+        LOGIN: &apos;BAR_LOGIN&apos;,
+        LOGIN_SUCCESS: &apos;BAR_LOGIN_SUCCESS&apos;,
+        LOGIN_ERROR: &apos;BAR_LOGIN_ERROR&apos;
+      });
+    });
+
+    it(&apos;throws Error when value is already registered&apos;, () =&gt; {
+      reaction([&apos;FOO&apos;, &apos;BAR&apos;], &apos;FOO_&apos;);
+      try {
+        reaction([&apos;FOO&apos;], &apos;FOO_&apos;);
+      } catch (e) {
+        assert(e.message === &apos;key is already registered: FOO -&gt; FOO_FOO&apos;);
+        return;
+      }
+      throw Error(&apos;does not throws error&apos;);
+    });
+
+    describe(&apos;throws Error when prefix is not string&apos;, () =&gt; {
+      const cases = [
+        [&apos;null&apos;, null, &apos;null&apos;],
+        [&apos;number&apos;, 1, &apos;1&apos;],
+        [&apos;object&apos;, {foo: &apos;foo&apos;}, &apos;[object Object]&apos;]
+      ];
+      cases.forEach(([type, prefix, expected]) =&gt; {
+        it(`: ${type}`, () =&gt; {
+          try {
+            reaction([&apos;FOO&apos;, &apos;BAR&apos;], prefix);
+          } catch (e) {
+            assert(e.message === `prefix must be string: ${expected}`);
+            return;
+          }
+          throw Error(&apos;does not throws error&apos;);
+        });
+      });
+    });
+
+    describe(&apos;throws Error when keys is not array&apos;, () =&gt; {
+      const cases = [
+        [&apos;null&apos;, null, &apos;null&apos;],
+        [&apos;number&apos;, 1, &apos;1&apos;],
+        [&apos;object&apos;, {foo: &apos;foo&apos;}, &apos;[object Object]&apos;]
+      ];
+      cases.forEach(([type, keys, expected]) =&gt; {
+        it(`: ${type}`, () =&gt; {
+          try {
+            reaction(keys);
+          } catch (e) {
+            assert(e.message === `keys must be Array: ${expected}`);
+            return;
+          }
+          throw Error(&apos;does not throws error&apos;);
+        });
+      });
+    });
+
+    describe(&apos;throws Error when keys is not array of string&apos;, () =&gt; {
+      const cases = [
+        [&apos;null&apos;, [null], &apos;null&apos;],
+        [&apos;number&apos;, [1], &apos;1&apos;],
+        [&apos;object&apos;, [{foo: &apos;foo&apos;}], &apos;[object Object]&apos;]
+      ];
+      cases.forEach(([type, keys, expected]) =&gt; {
+        it(`: ${type}`, () =&gt; {
+          try {
+            reaction(keys);
+          } catch (e) {
+            assert(e.message === `key must be string: ${expected}`);
+            return;
+          }
+          throw Error(&apos;does not throws error&apos;);
+        });
+      });
+    });
+  });
+
+  /** @test {createReaction} */
+  describe(&apos;createReaction&apos;, () =&gt; {
+    let createReaction = null;
+    beforeEach(() =&gt; {
+      createReaction = require(&apos;../src&apos;).createReaction;
+    });
+
+    it(&apos;can create reaction&apos;, () =&gt; {
+      const reaction = createReaction();
+      const types = reaction([&apos;LOGIN&apos;], &apos;FOO_&apos;);
+      assert.deepEqual(types, {
+        LOGIN: &apos;FOO_LOGIN&apos;
+      });
+    });
+
+    it(&apos;can create reaction with globalPrefix&apos;, () =&gt; {
+      const reaction = createReaction(&apos;DACHO/&apos;);
+      const types = reaction([&apos;LOGIN&apos;], &apos;FOO_&apos;);
+      assert.deepEqual(types, {
+        LOGIN: &apos;DACHO/FOO_LOGIN&apos;
+      });
+    });
+  });
+});
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.1)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
