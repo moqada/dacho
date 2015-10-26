@@ -111,6 +111,7 @@ describe('dacho', () => {
     });
   });
 
+  /** @test {createReaction} */
   describe('createReaction', () => {
     let createReaction = null;
     beforeEach(() => {
