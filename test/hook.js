@@ -1,4 +1,5 @@
-require('babel/register')({
+require('babel-core/register')({
   ignore: /node_modules/,
-  plugins: ['espower']
+  plugins: ['espower'],
+  presets: ['es2015']
 });
