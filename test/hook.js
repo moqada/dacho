@@ -1,5 +1,5 @@
 require('babel-core/register')({
   ignore: /node_modules/,
-  plugins: ['espower', 'transform-es2015-classes'],
+  plugins: ['espower'],
   presets: ['es2015']
 });
