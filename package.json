@@ -24,7 +24,8 @@
     "power-assert": "^1.1.0"
   },
   "files": [
-    "lib"
+    "lib",
+    "reaction.js"
   ],
   "homepage": "https://github.com/moqada/dacho#readme",
   "keywords": [
