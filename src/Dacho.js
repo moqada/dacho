@@ -3,7 +3,7 @@
  *
  * key/value object generator to be unique value
  */
-export default class Dacho {
+export default class Dacho {  // eslint-disable-line require-jsdoc
 
   /**
    * Constructor
