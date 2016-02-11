@@ -8,19 +8,35 @@ describe('dacho', () => {
       createReaction = require('../src').createReaction;
     });
 
-    it('can create reaction', () => {
-      const reaction = createReaction();
-      const types = reaction(['LOGIN'], 'FOO_');
-      assert.deepEqual(types, {
-        LOGIN: 'FOO_LOGIN'
+    context('can create reaction', () => {
+      const cases = [
+        {name: 'array', args: ['LOGIN']},
+        {name: 'object', args: {LOGIN: null}}
+      ];
+      cases.forEach(({name, args}) => {
+        it(name, () => {
+          const reaction = createReaction();
+          const types = reaction(args, 'FOO_');
+          assert.deepEqual(types, {
+            LOGIN: 'FOO_LOGIN'
+          });
+        });
       });
     });
 
-    it('can create reaction with globalPrefix', () => {
-      const reaction = createReaction('DACHO/');
-      const types = reaction(['LOGIN'], 'FOO_');
-      assert.deepEqual(types, {
-        LOGIN: 'DACHO/FOO_LOGIN'
+    context('can create reaction with globalPrefix', () => {
+      const cases = [
+        {name: 'array', args: ['LOGIN']},
+        {name: 'object', args: {LOGIN: null}}
+      ];
+      cases.forEach(({name, args}) => {
+        it(name, () => {
+          const reaction = createReaction('DACHO/');
+          const types = reaction(args, 'FOO_');
+          assert.deepEqual(types, {
+            LOGIN: 'DACHO/FOO_LOGIN'
+          });
+        });
       });
     });
   });
