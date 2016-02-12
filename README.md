@@ -32,18 +32,26 @@ It generate key/value object with a prefixed value.
 
 ```javascript
 // constants/nettoActionTypes.js
-import reaction from 'dacho';
+import reaction from 'dacho/reaction';
 
 export default reaction([
   'IN',
   'OUT',
   'PUSH'
 ], 'NETTO/')
+
+// OR using Object.
+//
+// export default reaction({
+//   IN: null,
+//   OUT: null,
+//   PUSH: null
+// }, 'NETTO/');
 ```
 
 ```javascript
 // constants/odenActionTypes.js
-import reaction from 'dacho';
+import reaction from 'dacho/reaction';
 
 export default reaction([
   'IN',
@@ -51,6 +59,15 @@ export default reaction([
   'PUSH',
   'SHOWER',
 ], 'ODEN/')
+
+// OR using Object.
+//
+// export default reaction({
+//   IN: null,
+//   OUT: null,
+//   PUSH: null
+//   SHOWER: null
+// }, 'ODEN/');
 ```
 
 ```javascript
@@ -91,7 +108,7 @@ It throws Error when you create same value object.
 
 ```javascript
 // ./constants/nettoActionTypes2.js
-import reaction from 'dacho';
+import reaction from 'dacho/reaction';
 
 export default reaction([
   'IN'
@@ -129,6 +146,21 @@ export default reaction([
 //   PUSH: 'DEGAWA/NETTO/PUSH'
 // });
 ```
+
+## Tips
+
+### Testing
+
+Despite collect values, It may raise Errors (`key is already registered`) when executing unit tests.
+One of solution of this problem is to use [clear-require](https://github.com/sindresorhus/clear-require).
+
+Example is [here](https://github.com/moqada/dacho/blob/master/test/reaction-spec.js).
+
+### Flow
+
+`dacho` can use together with Flow annotation.
+But, Flow version is 0.19 or higher.
+
 
 [npm-url]: https://www.npmjs.com/package/dacho
 [npm-image]: https://img.shields.io/npm/v/dacho.svg?style=flat-square

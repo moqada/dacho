@@ -1,14 +1,14 @@
+/* @flow */
 import nettoActionTypes from './constants/nettoActionTypes';
 import odenActionTypes from './constants/odenActionTypes';
 import degawaNettoActionTypes from './constants/degawaNettoActionTypes';
-
 
 /**
  * Reject bathing
  *
  * @return {Object}
  */
-export function rejectBathing() {
+export function rejectBathing(): Object {
   return {
     type: nettoActionTypes.PUSH,
     payload: {member: 'UESHIMA'}
@@ -21,7 +21,7 @@ export function rejectBathing() {
  *
  * @return {Object}
  */
-export function rejectEating() {
+export function rejectEating(): Object {
   return {
     type: odenActionTypes.PUSH,
     payload: {member: 'UESHIMA'}
@@ -34,7 +34,7 @@ export function rejectEating() {
  *
  * @return {Object}
  */
-export function rejectBathingForDegawa() {
+export function rejectBathingForDegawa(): Object {
   return {
     type: degawaNettoActionTypes.PUSH
   };

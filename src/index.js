@@ -14,4 +14,3 @@ function createReaction(globalPrefix = '') {
 }
 
 export {Dacho, createReaction};
-export default createReaction();
