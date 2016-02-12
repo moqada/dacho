@@ -27,8 +27,8 @@ export default class Dacho {  // eslint-disable-line require-jsdoc
   /**
    * react
    *
-   * @param {Object|string[]} keys foo
-   * @param {string} prefix hoge
+   * @param {Object|string[]} keys keys
+   * @param {string} prefix prefix for value
    * @return {Object}
    */
   react(keys, prefix) {
