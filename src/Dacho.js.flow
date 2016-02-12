@@ -1,0 +1,10 @@
+/* @flow */
+declare export default class Dacho {
+  globalPrefix: string;
+  registered: string[];
+  constructor(globalPrefix: string): void;
+  react(keys: string[], prefix: string): {[key: string]: string};
+  react<T: Object>(keys: T, prefix: string): {[key: $Enum<T>]: string};
+  validatePrefix(prefix: string): string;
+  validateKeys(keys: Object|string[]): string[];
+};

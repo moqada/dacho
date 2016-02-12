@@ -1,0 +1,8 @@
+/* @flow */
+import Dacho from './Dacho';
+type R1 = <T: Object>(keys: T, prefix?: string) => {[key: $Enum<T>]: string};
+type R2 = (keys: string[], prefix?: string) => {[key: string]: string};
+type Reaction = R1 & R2;
+
+declare export function createReaction(globalPrefix?: string): Reaction;
+export var Dacho;

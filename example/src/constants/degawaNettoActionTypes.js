@@ -1,3 +1,4 @@
+/* @flow */
 import reaction from '../singleton/reaction';
 
 

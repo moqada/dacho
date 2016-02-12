@@ -1,2 +1,2 @@
 /* @flow */
-module.exports = require('./lib/reaction');
+module.exports = require('./lib/reaction').default;
