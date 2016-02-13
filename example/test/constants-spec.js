@@ -1,9 +1,16 @@
 import assert from 'power-assert';
-import nettoActionTypes from '../src/constants/nettoActionTypes';
-import odenActionTypes from '../src/constants/odenActionTypes';
-import degawaNettoActionTypes from '../src/constants/degawaNettoActionTypes';
+import clearRequire from 'clear-require';
 
 describe('constants', () => {
+  let nettoActionTypes = null;
+  let odenActionTypes = null;
+  let degawaNettoActionTypes = null;
+  beforeEach(() => {
+    clearRequire('dacho');
+    nettoActionTypes = require('../src/constants/nettoActionTypes').default;
+    odenActionTypes = require('../src/constants/odenActionTypes').default;
+    degawaNettoActionTypes = require('../src/constants/degawaNettoActionTypes').default;
+  });
   it('nettoActionTypes', () => {
     assert.deepEqual(nettoActionTypes, {
       IN: 'NETTO/IN',

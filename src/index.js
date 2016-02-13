@@ -13,4 +13,6 @@ function createReaction(globalPrefix = '') {
   };
 }
 
-export {Dacho, createReaction};
+const reaction = createReaction();
+
+export {Dacho, createReaction, reaction};
