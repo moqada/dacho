@@ -35,6 +35,7 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Dacho.js~Dacho.html">Dacho</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createReaction">createReaction</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-reaction">reaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Reaction">Reaction</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -43,10 +44,23 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Dacho from &apos;./Dacho&apos;;
 
 /**
+ * @typedef {Function} Reaction
+ * @param {string[]|Object} keys object keys
+ * @param {string} [prefix=&apos;&apos;] prefix of value (Optional)
+ * @return {Object}
+ * @example
+ * reaction({ACTION1: null, ACTION2: null}, &apos;FOO/&apos;);
+ * // {ACTION1: &apos;FOO/ACTION1&apos;, ACTION2: &apos;FOO/ACTION2&apos;};
+ *
+ * reaction([&apos;ACTION1&apos;, &apos;ACTION2&apos;], &apos;BAR/&apos;);
+ * // {ACTION1: &apos;BAR/ACTION1&apos;, ACTION2: &apos;BAR/ACTION2&apos;};
+ */
+
+/**
  * createReaction
  *
- * @param {string} [globalPrefix] prefix for every key
- * @return {Function}
+ * @param {string} [globalPrefix=&apos;&apos;] prefix for every key
+ * @return {Reaction}
  */
 function createReaction(globalPrefix = &apos;&apos;) {
   const dacho = new Dacho(globalPrefix);
@@ -55,6 +69,11 @@ function createReaction(globalPrefix = &apos;&apos;) {
   };
 }
 
+/**
+ * reaction
+ *
+ * @type {Reaction}
+ */
 const reaction = createReaction();
 
 export {Dacho, createReaction, reaction};

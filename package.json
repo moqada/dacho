@@ -1,7 +1,7 @@
 {
   "name": "dacho",
   "description": "Utility of generating key/value object with a prefixed value",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "author": "moqada <moqada@gmail.com>",
   "bugs": {
     "url": "https://github.com/moqada/dacho/issues"
@@ -28,8 +28,7 @@
     "power-assert": "^1.2.0"
   },
   "files": [
-    "lib",
-    "reaction.js"
+    "lib"
   ],
   "homepage": "https://github.com/moqada/dacho#readme",
   "keywords": [

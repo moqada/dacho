@@ -522,6 +522,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/index.js~reaction",
+    "typedef/index.html#static-typedef-Reaction",
+    "src/index.js~Reaction",
+    "typedef"
+  ],
+  [
     "test/index-spec.js",
     "test-file/test/index-spec.js.html",
     "test/index-spec.js",
