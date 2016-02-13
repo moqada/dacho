@@ -1,3 +1,10 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/moqada/dacho/compare/v2.0.0...v2.0.1) (2016-02-13)
+
+* Fix documentation and a few mistakes of package.json.
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/moqada/dacho/compare/v1.0.0...v2.0.0) (2016-02-13)
 
