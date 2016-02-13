@@ -154,7 +154,7 @@ export default reaction([
 Despite collect values, It may raise Errors (`key is already registered`) when executing unit tests.
 One of solution of this problem is to use [clear-require](https://github.com/sindresorhus/clear-require).
 
-Example is [here](https://github.com/moqada/dacho/blob/master/test/reaction-spec.js).
+Example is [here](https://github.com/moqada/dacho/blob/master/example/test/constants-spec.js).
 
 ### Flow
 
