@@ -576,6 +576,100 @@
       "trailingComments": []
     },
     {
+      "type": "Identifier",
+      "declarations": [
+        {
+          "type": "VariableDeclarator",
+          "id": {
+            "type": "Identifier",
+            "name": "reaction",
+            "range": [
+              308,
+              316
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 6
+              },
+              "end": {
+                "line": 16,
+                "column": 14
+              }
+            }
+          },
+          "init": {
+            "type": "CallExpression",
+            "callee": {
+              "type": "Identifier",
+              "name": "createReaction",
+              "range": [
+                319,
+                333
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 17
+                },
+                "end": {
+                  "line": 16,
+                  "column": 31
+                }
+              }
+            },
+            "arguments": [],
+            "range": [
+              319,
+              335
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 17
+              },
+              "end": {
+                "line": 16,
+                "column": 33
+              }
+            }
+          },
+          "range": [
+            308,
+            335
+          ],
+          "loc": {
+            "start": {
+              "line": 16,
+              "column": 6
+            },
+            "end": {
+              "line": 16,
+              "column": 33
+            }
+          }
+        }
+      ],
+      "kind": "const",
+      "range": [
+        302,
+        336
+      ],
+      "loc": {
+        "start": {
+          "line": 16,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 34
+        }
+      },
+      "name": "_",
+      "leadingComments": [],
+      "trailingComments": []
+    },
+    {
       "type": "ExportNamedDeclaration",
       "declaration": null,
       "specifiers": [
@@ -585,16 +679,16 @@
             "type": "Identifier",
             "name": "Dacho",
             "range": [
-              310,
-              315
+              346,
+              351
             ],
             "loc": {
               "start": {
-                "line": 16,
+                "line": 18,
                 "column": 8
               },
               "end": {
-                "line": 16,
+                "line": 18,
                 "column": 13
               }
             }
@@ -603,31 +697,31 @@
             "type": "Identifier",
             "name": "Dacho",
             "range": [
-              310,
-              315
+              346,
+              351
             ],
             "loc": {
               "start": {
-                "line": 16,
+                "line": 18,
                 "column": 8
               },
               "end": {
-                "line": 16,
+                "line": 18,
                 "column": 13
               }
             }
           },
           "range": [
-            310,
-            315
+            346,
+            351
           ],
           "loc": {
             "start": {
-              "line": 16,
+              "line": 18,
               "column": 8
             },
             "end": {
-              "line": 16,
+              "line": 18,
               "column": 13
             }
           }
@@ -638,16 +732,16 @@
             "type": "Identifier",
             "name": "createReaction",
             "range": [
-              317,
-              331
+              353,
+              367
             ],
             "loc": {
               "start": {
-                "line": 16,
+                "line": 18,
                 "column": 15
               },
               "end": {
-                "line": 16,
+                "line": 18,
                 "column": 29
               }
             }
@@ -656,104 +750,102 @@
             "type": "Identifier",
             "name": "createReaction",
             "range": [
-              317,
-              331
+              353,
+              367
             ],
             "loc": {
               "start": {
-                "line": 16,
+                "line": 18,
                 "column": 15
               },
               "end": {
-                "line": 16,
+                "line": 18,
                 "column": 29
               }
             }
           },
           "range": [
-            317,
-            331
+            353,
+            367
           ],
           "loc": {
             "start": {
-              "line": 16,
+              "line": 18,
               "column": 15
             },
             "end": {
-              "line": 16,
+              "line": 18,
               "column": 29
+            }
+          }
+        },
+        {
+          "type": "ExportSpecifier",
+          "exported": {
+            "type": "Identifier",
+            "name": "reaction",
+            "range": [
+              369,
+              377
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 31
+              },
+              "end": {
+                "line": 18,
+                "column": 39
+              }
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "name": "reaction",
+            "range": [
+              369,
+              377
+            ],
+            "loc": {
+              "start": {
+                "line": 18,
+                "column": 31
+              },
+              "end": {
+                "line": 18,
+                "column": 39
+              }
+            }
+          },
+          "range": [
+            369,
+            377
+          ],
+          "loc": {
+            "start": {
+              "line": 18,
+              "column": 31
+            },
+            "end": {
+              "line": 18,
+              "column": 39
             }
           }
         }
       ],
       "source": null,
       "range": [
-        302,
-        333
+        338,
+        379
       ],
       "loc": {
         "start": {
-          "line": 16,
+          "line": 18,
           "column": 0
         },
         "end": {
-          "line": 16,
-          "column": 31
-        }
-      }
-    },
-    {
-      "type": "ExportDefaultDeclaration",
-      "declaration": {
-        "type": "CallExpression",
-        "callee": {
-          "type": "Identifier",
-          "name": "createReaction",
-          "range": [
-            349,
-            363
-          ],
-          "loc": {
-            "start": {
-              "line": 17,
-              "column": 15
-            },
-            "end": {
-              "line": 17,
-              "column": 29
-            }
-          }
-        },
-        "arguments": [],
-        "range": [
-          349,
-          365
-        ],
-        "loc": {
-          "start": {
-            "line": 17,
-            "column": 15
-          },
-          "end": {
-            "line": 17,
-            "column": 31
-          }
-        },
-        "leadingComments": [],
-        "trailingComments": []
-      },
-      "range": [
-        334,
-        366
-      ],
-      "loc": {
-        "start": {
-          "line": 17,
-          "column": 0
-        },
-        "end": {
-          "line": 17,
-          "column": 32
+          "line": 18,
+          "column": 41
         }
       }
     },
@@ -1261,17 +1353,130 @@
       "specifiers": null,
       "source": null,
       "range": [
-        302,
-        333
+        338,
+        379
       ],
       "loc": {
         "start": {
-          "line": 16,
+          "line": 18,
           "column": 0
         },
         "end": {
-          "line": 16,
-          "column": 31
+          "line": 18,
+          "column": 41
+        }
+      },
+      "leadingComments": null
+    },
+    {
+      "type": "ExportNamedDeclaration",
+      "declaration": {
+        "type": "VariableDeclaration",
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "id": {
+              "type": "Identifier",
+              "name": "reaction",
+              "range": [
+                308,
+                316
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 6
+                },
+                "end": {
+                  "line": 16,
+                  "column": 14
+                }
+              }
+            },
+            "init": {
+              "type": "CallExpression",
+              "callee": {
+                "type": "Identifier",
+                "name": "createReaction",
+                "range": [
+                  319,
+                  333
+                ],
+                "loc": {
+                  "start": {
+                    "line": 16,
+                    "column": 17
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 31
+                  }
+                }
+              },
+              "arguments": [],
+              "range": [
+                319,
+                335
+              ],
+              "loc": {
+                "start": {
+                  "line": 16,
+                  "column": 17
+                },
+                "end": {
+                  "line": 16,
+                  "column": 33
+                }
+              }
+            },
+            "range": [
+              308,
+              335
+            ],
+            "loc": {
+              "start": {
+                "line": 16,
+                "column": 6
+              },
+              "end": {
+                "line": 16,
+                "column": 33
+              }
+            }
+          }
+        ],
+        "kind": "const",
+        "range": [
+          302,
+          336
+        ],
+        "loc": {
+          "start": {
+            "line": 16,
+            "column": 0
+          },
+          "end": {
+            "line": 16,
+            "column": 34
+          }
+        },
+        "leadingComments": [],
+        "trailingComments": []
+      },
+      "specifiers": null,
+      "source": null,
+      "range": [
+        338,
+        379
+      ],
+      "loc": {
+        "start": {
+          "line": 18,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 41
         }
       },
       "leadingComments": null
@@ -1280,7 +1485,7 @@
   "sourceType": "module",
   "range": [
     0,
-    366
+    379
   ],
   "loc": {
     "start": {
@@ -1288,8 +1493,8 @@
       "column": 0
     },
     "end": {
-      "line": 17,
-      "column": 32
+      "line": 18,
+      "column": 41
     }
   },
   "comments": [

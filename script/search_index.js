@@ -12,6 +12,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "dacho/src/index.js~reaction",
+    "variable/index.html#static-variable-reaction",
+    "<span>reaction</span> <span class=\"search-result-import-path\">dacho/src/index.js</span>",
+    "variable"
+  ],
+  [
     "builtinexternal/ecmascriptexternal.js~array",
     "external/index.html",
     "BuiltinExternal/ECMAScriptExternal.js~Array",
@@ -294,6 +300,12 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "builtinexternal/webapiexternal.js~audiocontext",
+    "external/index.html",
+    "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "external"
+  ],
+  [
     "builtinexternal/webapiexternal.js~canvasrenderingcontext2d",
     "external/index.html",
     "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
@@ -343,86 +355,122 @@ window.esdocSearchIndex = [
   ],
   [
     "createreaction src/index.js~createreaction,createreaction",
-    "test-file/test/index-spec.js.html#lineNumber115",
+    "test-file/test/index-spec.js.html#lineNumber6",
     "dacho createReaction",
     "test"
   ],
   [
     "",
-    "test-file/test/index-spec.js.html#lineNumber121",
+    "test-file/test/index-spec.js.html#lineNumber12",
     "dacho createReaction can create reaction",
     "test"
   ],
   [
     "",
-    "test-file/test/index-spec.js.html#lineNumber129",
+    "test-file/test/index-spec.js.html#lineNumber18",
+    "dacho createReaction can create reaction ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber28",
     "dacho createReaction can create reaction with globalPrefix",
     "test"
   ],
   [
     "",
-    "test-file/test/index-spec.js.html#lineNumber5",
-    "dacho reaction",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber12",
-    "dacho reaction can generate types",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber30",
-    "dacho reaction can generate types when prefix is different",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber21",
-    "dacho reaction can generate types without prefix",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber75",
-    "dacho reaction throws Error when keys is not array",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber82",
-    "dacho reaction throws Error when keys is not array ",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber94",
-    "dacho reaction throws Error when keys is not array of string",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber101",
-    "dacho reaction throws Error when keys is not array of string ",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber56",
-    "dacho reaction throws Error when prefix is not string",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/index-spec.js.html#lineNumber63",
-    "dacho reaction throws Error when prefix is not string ",
+    "test-file/test/index-spec.js.html#lineNumber34",
+    "dacho createReaction can create reaction with globalPrefix ",
     "test"
   ],
   [
     "",
     "test-file/test/index-spec.js.html#lineNumber45",
+    "dacho reaction",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber52",
+    "dacho reaction can generate types",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber62",
+    "dacho reaction can generate types ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber94",
+    "dacho reaction can generate types when prefix is different",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber104",
+    "dacho reaction can generate types when prefix is different ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber73",
+    "dacho reaction can generate types without prefix",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber83",
+    "dacho reaction can generate types without prefix ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber177",
+    "dacho reaction throws Error when keys is not array of string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber184",
+    "dacho reaction throws Error when keys is not array of string ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber159",
+    "dacho reaction throws Error when keys is not array or object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber165",
+    "dacho reaction throws Error when keys is not array or object ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber140",
+    "dacho reaction throws Error when prefix is not string",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber147",
+    "dacho reaction throws Error when prefix is not string ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber121",
     "dacho reaction throws Error when value is already registered",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/index-spec.js.html#lineNumber127",
+    "dacho reaction throws Error when value is already registered ",
     "test"
   ],
   [

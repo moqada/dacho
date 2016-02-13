@@ -1,6 +1,6 @@
 {
-  "coverage": "100%",
-  "expectCount": 8,
+  "coverage": "88.88%",
+  "expectCount": 9,
   "actualCount": 8,
   "files": {
     "src/Dacho.js": {
@@ -9,9 +9,11 @@
       "undocumentLines": []
     },
     "src/index.js": {
-      "expectCount": 1,
+      "expectCount": 2,
       "actualCount": 1,
-      "undocumentLines": []
+      "undocumentLines": [
+        16
+      ]
     }
   }
 }

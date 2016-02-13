@@ -34,6 +34,7 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Dacho.js~Dacho.html">Dacho</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-createReaction">createReaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-reaction">reaction</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -43,58 +44,142 @@
 import clearRequire from &apos;clear-require&apos;;
 
 describe(&apos;dacho&apos;, () =&gt; {
+  /** @test {createReaction} */
+  describe(&apos;createReaction&apos;, () =&gt; {
+    let createReaction = null;
+    beforeEach(() =&gt; {
+      createReaction = require(&apos;../src&apos;).createReaction;
+    });
+
+    context(&apos;can create reaction&apos;, () =&gt; {
+      const cases = [
+        {name: &apos;array&apos;, args: [&apos;LOGIN&apos;]},
+        {name: &apos;object&apos;, args: {LOGIN: null}}
+      ];
+      cases.forEach(({name, args}) =&gt; {
+        it(name, () =&gt; {
+          const reaction = createReaction();
+          const types = reaction(args, &apos;FOO_&apos;);
+          assert.deepEqual(types, {
+            LOGIN: &apos;FOO_LOGIN&apos;
+          });
+        });
+      });
+    });
+
+    context(&apos;can create reaction with globalPrefix&apos;, () =&gt; {
+      const cases = [
+        {name: &apos;array&apos;, args: [&apos;LOGIN&apos;]},
+        {name: &apos;object&apos;, args: {LOGIN: null}}
+      ];
+      cases.forEach(({name, args}) =&gt; {
+        it(name, () =&gt; {
+          const reaction = createReaction(&apos;DACHO/&apos;);
+          const types = reaction(args, &apos;FOO_&apos;);
+          assert.deepEqual(types, {
+            LOGIN: &apos;DACHO/FOO_LOGIN&apos;
+          });
+        });
+      });
+    });
+  });
+
   describe(&apos;reaction&apos;, () =&gt; {
     let reaction = null;
     beforeEach(() =&gt; {
       clearRequire(&apos;../src&apos;);
-      reaction = require(&apos;../src&apos;, {}).default;
+      reaction = require(&apos;../src&apos;).reaction;
     });
 
-    it(&apos;can generate types&apos;, () =&gt; {
-      const types = reaction([&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;], &apos;FOO_&apos;);
-      assert.deepEqual(types, {
-        LOGIN: &apos;FOO_LOGIN&apos;,
-        LOGIN_SUCCESS: &apos;FOO_LOGIN_SUCCESS&apos;,
-        LOGIN_ERROR: &apos;FOO_LOGIN_ERROR&apos;
+    context(&apos;can generate types&apos;, () =&gt; {
+      const cases = [
+        {name: &apos;array&apos;, args: [&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;]},
+        {name: &apos;object&apos;, args: {
+          LOGIN: null,
+          LOGIN_SUCCESS: null,
+          LOGIN_ERROR: null
+        }}
+      ];
+      cases.forEach(({name, args}) =&gt; {
+        it(name, () =&gt; {
+          const types = reaction(args, &apos;FOO_&apos;);
+          assert.deepEqual(types, {
+            LOGIN: &apos;FOO_LOGIN&apos;,
+            LOGIN_SUCCESS: &apos;FOO_LOGIN_SUCCESS&apos;,
+            LOGIN_ERROR: &apos;FOO_LOGIN_ERROR&apos;
+          });
+        });
       });
     });
 
-    it(&apos;can generate types without prefix&apos;, () =&gt; {
-      const types = reaction([&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;]);
-      assert.deepEqual(types, {
-        LOGIN: &apos;LOGIN&apos;,
-        LOGIN_SUCCESS: &apos;LOGIN_SUCCESS&apos;,
-        LOGIN_ERROR: &apos;LOGIN_ERROR&apos;
+    context(&apos;can generate types without prefix&apos;, () =&gt; {
+      const cases = [
+        {name: &apos;array&apos;, args: [&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;]},
+        {name: &apos;object&apos;, args: {
+          LOGIN: null,
+          LOGIN_SUCCESS: null,
+          LOGIN_ERROR: null
+        }}
+      ];
+      cases.forEach(({name, args}) =&gt; {
+        it(name, () =&gt; {
+          const types = reaction(args);
+          assert.deepEqual(types, {
+            LOGIN: &apos;LOGIN&apos;,
+            LOGIN_SUCCESS: &apos;LOGIN_SUCCESS&apos;,
+            LOGIN_ERROR: &apos;LOGIN_ERROR&apos;
+          });
+        });
       });
     });
 
-    it(&apos;can generate types when prefix is different&apos;, () =&gt; {
-      const types1 = reaction([&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;], &apos;FOO_&apos;);
-      const types2 = reaction([&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;], &apos;BAR_&apos;);
-      assert.deepEqual(types1, {
-        LOGIN: &apos;FOO_LOGIN&apos;,
-        LOGIN_SUCCESS: &apos;FOO_LOGIN_SUCCESS&apos;,
-        LOGIN_ERROR: &apos;FOO_LOGIN_ERROR&apos;
-      });
-      assert.deepEqual(types2, {
-        LOGIN: &apos;BAR_LOGIN&apos;,
-        LOGIN_SUCCESS: &apos;BAR_LOGIN_SUCCESS&apos;,
-        LOGIN_ERROR: &apos;BAR_LOGIN_ERROR&apos;
+    context(&apos;can generate types when prefix is different&apos;, () =&gt; {
+      const cases = [
+        {name: &apos;array&apos;, args: [&apos;LOGIN&apos;, &apos;LOGIN_SUCCESS&apos;, &apos;LOGIN_ERROR&apos;]},
+        {name: &apos;object&apos;, args: {
+          LOGIN: null,
+          LOGIN_SUCCESS: null,
+          LOGIN_ERROR: null
+        }}
+      ];
+      cases.forEach(({name, args}) =&gt; {
+        it(name, () =&gt; {
+          const types1 = reaction(args, &apos;FOO_&apos;);
+          const types2 = reaction(args, &apos;BAR_&apos;);
+          assert.deepEqual(types1, {
+            LOGIN: &apos;FOO_LOGIN&apos;,
+            LOGIN_SUCCESS: &apos;FOO_LOGIN_SUCCESS&apos;,
+            LOGIN_ERROR: &apos;FOO_LOGIN_ERROR&apos;
+          });
+          assert.deepEqual(types2, {
+            LOGIN: &apos;BAR_LOGIN&apos;,
+            LOGIN_SUCCESS: &apos;BAR_LOGIN_SUCCESS&apos;,
+            LOGIN_ERROR: &apos;BAR_LOGIN_ERROR&apos;
+          });
+        });
       });
     });
 
-    it(&apos;throws Error when value is already registered&apos;, () =&gt; {
-      reaction([&apos;FOO&apos;, &apos;BAR&apos;], &apos;FOO_&apos;);
-      try {
-        reaction([&apos;FOO&apos;], &apos;FOO_&apos;);
-      } catch (e) {
-        assert(e.message === &apos;key is already registered: FOO -&gt; FOO_FOO&apos;);
-        return;
-      }
-      throw Error(&apos;does not throws error&apos;);
+    context(&apos;throws Error when value is already registered&apos;, () =&gt; {
+      const cases = [
+        {name: &apos;array&apos;, args: [&apos;FOO&apos;, &apos;BAR&apos;]},
+        {name: &apos;object&apos;, args: {FOO: null, BAR: null}}
+      ];
+      cases.forEach(({name, args}) =&gt; {
+        it(name, () =&gt; {
+          reaction(args, &apos;FOO_&apos;);
+          try {
+            reaction([&apos;FOO&apos;], &apos;FOO_&apos;);
+          } catch (e) {
+            assert(e.message === &apos;key is already registered: FOO -&gt; FOO_FOO&apos;);
+            return;
+          }
+          throw Error(&apos;does not throws error&apos;);
+        });
+      });
     });
 
-    describe(&apos;throws Error when prefix is not string&apos;, () =&gt; {
+    context(&apos;throws Error when prefix is not string&apos;, () =&gt; {
       const cases = [
         [&apos;null&apos;, null, &apos;null&apos;],
         [&apos;number&apos;, 1, &apos;1&apos;],
@@ -113,18 +198,17 @@ describe(&apos;dacho&apos;, () =&gt; {
       });
     });
 
-    describe(&apos;throws Error when keys is not array&apos;, () =&gt; {
+    context(&apos;throws Error when keys is not array or object&apos;, () =&gt; {
       const cases = [
         [&apos;null&apos;, null, &apos;null&apos;],
-        [&apos;number&apos;, 1, &apos;1&apos;],
-        [&apos;object&apos;, {foo: &apos;foo&apos;}, &apos;[object Object]&apos;]
+        [&apos;number&apos;, 1, &apos;1&apos;]
       ];
       cases.forEach(([type, keys, expected]) =&gt; {
         it(`: ${type}`, () =&gt; {
           try {
             reaction(keys);
           } catch (e) {
-            assert(e.message === `keys must be Array: ${expected}`);
+            assert(e.message === `keys must be Array or Object: ${expected}`);
             return;
           }
           throw Error(&apos;does not throws error&apos;);
@@ -132,7 +216,7 @@ describe(&apos;dacho&apos;, () =&gt; {
       });
     });
 
-    describe(&apos;throws Error when keys is not array of string&apos;, () =&gt; {
+    context(&apos;throws Error when keys is not array of string&apos;, () =&gt; {
       const cases = [
         [&apos;null&apos;, [null], &apos;null&apos;],
         [&apos;number&apos;, [1], &apos;1&apos;],
@@ -151,37 +235,13 @@ describe(&apos;dacho&apos;, () =&gt; {
       });
     });
   });
-
-  /** @test {createReaction} */
-  describe(&apos;createReaction&apos;, () =&gt; {
-    let createReaction = null;
-    beforeEach(() =&gt; {
-      createReaction = require(&apos;../src&apos;).createReaction;
-    });
-
-    it(&apos;can create reaction&apos;, () =&gt; {
-      const reaction = createReaction();
-      const types = reaction([&apos;LOGIN&apos;], &apos;FOO_&apos;);
-      assert.deepEqual(types, {
-        LOGIN: &apos;FOO_LOGIN&apos;
-      });
-    });
-
-    it(&apos;can create reaction with globalPrefix&apos;, () =&gt; {
-      const reaction = createReaction(&apos;DACHO/&apos;);
-      const types = reaction([&apos;LOGIN&apos;], &apos;FOO_&apos;);
-      assert.deepEqual(types, {
-        LOGIN: &apos;DACHO/FOO_LOGIN&apos;
-      });
-    });
-  });
 });
 </code></pre>
 
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.1)</span></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.4)</span></a>
 </footer>
 
 <script src="script/search_index.js"></script>

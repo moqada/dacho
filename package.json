@@ -1,28 +1,35 @@
 {
   "name": "dacho",
   "description": "Utility of generating key/value object with a prefixed value",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "moqada <moqada@gmail.com>",
   "bugs": {
     "url": "https://github.com/moqada/dacho/issues"
   },
   "dependencies": {},
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babel-plugin-espower": "^1.0.0",
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
+    "babel-plugin-espower": "^2.1.1",
+    "babel-plugin-transform-flow-strip-types": "^6.5.0",
+    "babel-preset-es2015": "^6.5.0",
+    "chokidar-cli": "^1.2.0",
     "clear-require": "^1.0.1",
     "codecov.io": "^0.1.6",
-    "esdoc": "^0.4.1",
-    "eslint": "^1.7.3",
-    "eslint-config-moqada": "^7.0.0",
-    "gh-pages": "^0.4.0",
-    "isparta": "^3.1.0",
-    "mocha": "^2.3.3",
-    "npm-run-all": "^1.2.12",
-    "power-assert": "^1.1.0"
+    "cpx": "^1.2.1",
+    "esdoc": "^0.4.4",
+    "eslint": "^2.0.0",
+    "eslint-config-moqada": "^10.0.0",
+    "flow-bin": "^0.21.0",
+    "gh-pages": "^0.9.0",
+    "isparta": "^4.0.0",
+    "mocha": "^2.4.5",
+    "npm-run-all": "^1.5.1",
+    "power-assert": "^1.2.0"
   },
   "files": [
-    "lib"
+    "lib",
+    "reaction.js"
   ],
   "homepage": "https://github.com/moqada/dacho#readme",
   "keywords": [
@@ -41,7 +48,9 @@
     "url": "https://github.com/moqada/dacho.git"
   },
   "scripts": {
-    "build": "babel src --out-dir lib",
+    "build": "npm-run-all -p build:*",
+    "build:interface": "cpx 'src/*.flow' lib/",
+    "build:js": "babel src --out-dir lib",
     "codecov": "cat coverage/lcov.info | codecov",
     "deploy": "npm-run-all doc gh-pages",
     "doc": "esdoc -c esdoc.json",
@@ -52,10 +61,14 @@
     "predoc": "rm -rf doc",
     "prepublish": "git diff --exit-code && npm run --if-present build",
     "pretest": "rm -rf coverage",
+    "stop": "flow stop",
     "test": "npm-run-all lint test:*",
     "test:coverage": "babel-node $(npm bin)/isparta cover --report text --report html --report lcovonly _mocha -- test/{**/,}*spec.js",
     "test:example": "cd example && npm i && npm test",
+    "test:flow": "flow",
     "watch": "npm-run-all --parallel watch:*",
+    "watch:flow": "flow & chokidar src -c flow",
+    "watch:interface": "cpx -w 'src/*.flow' lib/",
     "watch:src": "babel --out-dir=lib --watch src",
     "watch:test": "mocha --watch test/{**/,}*spec.js"
   }
