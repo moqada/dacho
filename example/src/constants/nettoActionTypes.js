@@ -1,5 +1,5 @@
 /* @flow */
-import reaction from 'dacho/reaction';
+import {reaction} from 'dacho';
 
 export default reaction({
   IN: null,

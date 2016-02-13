@@ -32,7 +32,7 @@ It generate key/value object with a prefixed value.
 
 ```javascript
 // constants/nettoActionTypes.js
-import reaction from 'dacho/reaction';
+import {reaction} from 'dacho';
 
 export default reaction([
   'IN',
@@ -51,7 +51,7 @@ export default reaction([
 
 ```javascript
 // constants/odenActionTypes.js
-import reaction from 'dacho/reaction';
+import {reaction} from 'dacho';
 
 export default reaction([
   'IN',
@@ -108,7 +108,7 @@ It throws Error when you create same value object.
 
 ```javascript
 // ./constants/nettoActionTypes2.js
-import reaction from 'dacho/reaction';
+import {reaction} from 'dacho';
 
 export default reaction([
   'IN'
