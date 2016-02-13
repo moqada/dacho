@@ -4,7 +4,8 @@
   "description": "Example test",
   "main": "actions.js",
   "scripts": {
-    "test": "mocha test",
+    "test": "mocha test && flow --timeout=30",
+    "test:flow": "flow",
     "test:watch": "mocha --watch test"
   },
   "author": "moqada <moqada@gmail.com>",
