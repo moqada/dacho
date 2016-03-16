@@ -1,1 +1,4 @@
-extends: moqada
+extends:
+  - moqada
+  - moqada/node
+  - moqada/browser
