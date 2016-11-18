@@ -2,3 +2,5 @@ extends:
   - moqada
   - moqada/node
   - moqada/browser
+rules:
+  node/no-unsupported-features
